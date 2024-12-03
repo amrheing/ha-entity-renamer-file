@@ -162,6 +162,9 @@ def rename_entities(rename_data, test=False):
 
     ws.close()
     
+def validate_entites():
+    return
+    
 def process_file(input=None, test=False, counter=0 ):
     with open(input, newline='') as csvfile:
         data = csv.reader(csvfile, delimiter=';')
