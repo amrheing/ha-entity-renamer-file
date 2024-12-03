@@ -167,7 +167,7 @@ def validate_entites():
     
 def process_file(input=None, test=False, counter=0 ):
     with open(input, newline='') as csvfile:
-        data = csv.reader(csvfile, delimiter=';')
+        data = csv.reader(csvfile, delimiter=',')
         n: int = 0
         count: int = int(counter)
         for row in data:

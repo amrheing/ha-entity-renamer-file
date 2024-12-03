@@ -97,6 +97,72 @@ Entity 'input_text.interesting_testtext_1' renamed to 'input_text.just_another_t
 ```
 ===== Extension for file upload ======
 
+Create an output.csv for the entites to rename
+
+```
+$ ./homeassistant-entity-renamer.py --search "smoke" --output-csv output.csv
+
+Friendly Name,Current Entity ID,New Entity ID
+Nuki Haustüre,sensor.nuki_hausture_battery_level,
+Nuki Haustüre Button Enabled,switch.nuki_hausture_button_enabled,
+Nuki Haustüre Last Log,sensor.nuki_hausture_last_log,
+Nuki Haustüre authorization: Ellen,switch.nuki_hausture_authorization_ellen,
+Nuki Haustüre authorization: Gerald,switch.nuki_hausture_authorization_gerald_3,
+Nuki Haustüre authorization: Gerald ,switch.nuki_hausture_authorization_gerald_2,
+Nuki Haustüre authorization: Lydi,switch.nuki_hausture_authorization_lydi_2,
+Nuki Haustüre authorization: Maike,switch.nuki_hausture_authorization_maike_2,
+Nuki Haustüre authorization: Maike,switch.nuki_hausture_authorization_maike,
+Nuki Haustüre authorization: Nuki Fob,switch.nuki_hausture_authorization_nuki_fob,
+Nuki Haustüre authorization: iphone-ga,switch.nuki_hausture_authorization_iphone_ga,
+Schalter Haustüre Action,sensor.schalter_hausture_action,
+Schalter Haustüre Batterie,sensor.schalter_hausture_battery,
+Schalter Haustüre Power outage count,sensor.schalter_hausture_power_outage_count,
+Schalter Haustüre Temperatur,sensor.schalter_hausture_device_temperature,
+
+```
+
+Now edit the file, for sure, that changes wold be done easier with a search/replace regex, but it is for demonstation
+
+```
+Friendly Name,Current Entity ID,New Entity ID
+Nuki Haustüre,sensor.nuki_hausture_battery_level,sensor.nuki_haustuere_battery_level,
+Nuki Haustüre Button Enabled,switch.nuki_hausture_button_enabled,switch.nuki_haustuere_button_enabled
+Nuki Haustüre Last Log,sensor.nuki_hausture_last_log,sensor.nuki_haustuere_last_log,
+Nuki Haustüre authorization: Ellen,switch.nuki_hausture_authorization_ellen,switch.nuki_haustuere_authorization_ellen
+Nuki Haustüre authorization: Gerald,switch.nuki_hausture_authorization_gerald_3,switch.nuki_haustuere_authorization_gerald,
+Nuki Haustüre authorization: Gerald ,switch.nuki_hausture_authorization_gerald_2,switch.nuki_haustuere_authorization_gerald,
+Nuki Haustüre authorization: Lydi,switch.nuki_hausture_authorization_lydi_2,switch.nuki_haustuere_authorization_lydi
+Nuki Haustüre authorization: Maike,switch.nuki_hausture_authorization_maike_2,switch.nuki_haustuere_authorization_maike
+Nuki Haustüre authorization: Maike,switch.nuki_hausture_authorization_maike,switch.nuki_haustuere_authorization_maike,
+Nuki Haustüre authorization: Nuki Fob,switch.nuki_hausture_authorization_nuki_fob,switch.nuki_haustuere_authorization_nuki_fob,
+Nuki Haustüre authorization: iphone-ga,switch.nuki_hausture_authorization_iphone_ga,
+Schalter Haustüre Action,sensor.schalter_hausture_action,sensor.schalter_haustuere_action,
+Schalter Haustüre Batterie,sensor.schalter_hausture_battery,sensor.schalter_haustuere_battery,
+Schalter Haustüre Power outage count,sensor.schalter_hausture_power_outage_count,sensor.schalter_haustuere_power_outage_count,
+Schalter Haustüre Temperatur,sensor.schalter_hausture_device_temperature,sensor.schalter_haustuere_device_temperature,
+```
+
+and import it to the system. First in the testmode
+
+-t or --test
+-c or --count 2 than only a few lines will be processed
+
+```
+./ha-entity-renamer-file.py -t -i tuere_new.csv -c 3
+Namespace(search_regex=None, replace_regex=None, output_csv=None, input='tuere_new.csv', test=True, count='3')
+No entities found for: Current Entity ID
+Testmode: {"id": 1, "type": "config/entity_registry/update", "entity_id": "sensor.nuki_hausture_battery_level", "new_entity_id": "sensor.nuki_haustuere_battery_level"}
+Testmode: {"id": 1, "type": "config/entity_registry/update", "entity_id": "switch.nuki_hausture_button_enabled", "new_entity_id": "switch.nuki_haustuere_button_enabled"}
+```
+
+Check if all is correct and then lets run
+
+```
+./ha-entity-renamer-file.py -i tuere_new.csv
+```
+
+You will get an output which tell's about the success
+
 
 ## Acknowledgements
 
