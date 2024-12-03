@@ -196,6 +196,7 @@ if __name__ == "__main__":
     parser.add_argument('-c', '--count', default=0,  help='Counter for filemode')
     args = parser.parse_args()
     
+    
     print(args)
     
     if args.input != None:
