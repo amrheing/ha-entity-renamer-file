@@ -147,6 +147,7 @@ Schalter Haustüre Temperatur,sensor.schalter_hausture_device_temperature,sensor
 and import it to the system. First in the testmode
 
 -t or --test
+
 -c or --count 2 than only a few lines will be processed
 
 ```
