@@ -12,6 +12,8 @@ The `homeassistant-entity-renamer.py` script provides the following functionalit
 - Rename entities: You can rename entities by specifying a search regular expression and a replace regular expression (see pythons [re.sub()](https://docs.python.org/3/library/re.html#re.sub)). The script will display a table with the current entity IDs, new entity IDs, and friendly names. It will ask for confirmation before renaming the entities.
 - Preserves the history of renamed entities since it uses the same code path for renaming as the HomeAssistant UI (which preserves history since the release 2022.4). See [this websocket callback](https://github.com/home-assistant/core/blob/2023.7.2/homeassistant/components/config/entity_registry.py#L147).
 
+- Edit the exported csv file with attaching the new entity name to the line. This can be imported later.
+- added a testmode
 
 Tested on HomeAssistant 2024.11.3.
 
