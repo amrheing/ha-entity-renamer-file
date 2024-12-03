@@ -188,10 +188,10 @@ def process_file(input=None, test=False, counter=0 ):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="HomeAssistant Entity Renamer")
-    parser.add_argument('--search', dest='search_regex', help='Regular expression for search. Note: Only searches entity IDs.')
-    parser.add_argument('--replace', dest='replace_regex', help='Regular expression for replace')
-    parser.add_argument('--output-csv', dest='output_csv', help='Output preview table to CSV.')
-    parser.add_argument('--input', dest="input", default=None, help='Input file for renaming.')
+    parser.add_argument('-s', '--search', dest='search_regex', help='Regular expression for search. Note: Only searches entity IDs.')
+    parser.add_argument('-r', '--replace', dest='replace_regex', help='Regular expression for replace')
+    parser.add_argument('-o', '--output-csv', dest='output_csv', help='Output preview table to CSV.')
+    parser.add_argument('-i', '--input', dest="input", default=None, help='Input file for renaming.')
     parser.add_argument('-t', '--test', default=False, action='store_true', help='Testmode for input file mode')
     parser.add_argument('-c', '--count', default=0,  help='Counter for filemode')
     args = parser.parse_args()

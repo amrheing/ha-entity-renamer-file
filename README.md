@@ -95,6 +95,8 @@ Entity 'input_number.interesting_testnumber_1' renamed to 'input_number.just_ano
 Entity 'input_text.interesting_testtext_1' renamed to 'input_text.just_another_text' successfully!
 
 ```
+===== Extension for file upload ======
+
 
 ## Acknowledgements
 
